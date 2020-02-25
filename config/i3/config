@@ -41,6 +41,7 @@ client.background       $background
 
 # Wall Paper
 exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/illyria-default.jpg
+exec_always --no-startup-id picom
 
 ###############################
 #         KEYBINDING          #
