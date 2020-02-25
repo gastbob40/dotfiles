@@ -2,24 +2,24 @@
 !       urxvt
 ! ===================
 
-URxvt*scrollBar:	        false
-URxvt*letterSpace:  	    -1
+URxvt*scrollBar:            false
+URxvt*letterSpace:          -1
 URxvt.internalBorder:       10
-URxvt*font: 		        xft:Menlo for Powerline:regular:size=13
-URxvt*boldFont:		        xft:Menlo for Powerline:bold:size=13
+URxvt*font:                 xft:Menlo for Powerline:regular:size=13
+URxvt*boldFont:             xft:Menlo for Powerline:bold:size=13
 URxvt*cursorBlink:          true
-URxvt.iso14755:		        false
-URxvt*utf8:			        true
+URxvt.iso14755:             false
+URxvt*utf8:                 true
 
 ! =================
 !       Xft
 ! =================
-Xft.dpi:          	        96
-Xft.antialias:     	        true
-Xft.rgba:			        subpixel
-Xft.hinting:       	        true
-Xft.hintstyle:		        hintslight
-! Xft.lcdfilter:	        lcddefault
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   subpixel
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+! Xft.lcdfilter:            lcddefault
 
 ! ============
 !   Couleurs
