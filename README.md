@@ -29,12 +29,12 @@ makepkg -si
 
 5. **Install a login manager screen, as [LightDM WebKit2](https://github.com/Litarvan/lightdm-webkit-theme-litarvan).**
 
-6. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You can find my file configuration in the config folder
+6. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You can find my file configuration in the config folder.
 ```bash
 sudo yay -S i3-gaps
 ``` 
 
-7. **Install `rofi`, a run command interface.** My configuration file can be found in the config folder
+7. **Install `rofi`, a run command interface.** My configuration file can be found in the config folder.
 ```bash
 sudo pacman -S rofi
 ```
