@@ -39,4 +39,10 @@ sudo yay -S i3-gaps
 sudo pacman -S rofi
 ```
 
-
+8. **Add a composite manager, as [Picom](https://wiki.archlinux.org/index.php/Picom).**
+```bash
+sudo pacman -S picom
+mkdir ~/.config/picom/
+cp /etc/xdg/picom.conf. ~/.config/picom/picom.conf
+picom ~/.config/picom/picom.conf
+```
