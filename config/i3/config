@@ -39,9 +39,10 @@ client.urgent           $active     $active    	$background    #900000   $active
 client.placeholder      $background $background $foreground    #000000   $inactive
 client.background       $background
 
-# Wall Paper
+# Applications
 exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/illyria-default.jpg
 exec_always --no-startup-id picom
+exec_always --no-startup-id "killall polybar;polybar -r default"
 
 ###############################
 #         KEYBINDING          #
