@@ -29,20 +29,35 @@ makepkg -si
 
 5. **Install a login manager screen, as [LightDM WebKit2](https://github.com/Litarvan/lightdm-webkit-theme-litarvan).**
 
-6. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You can find my file configuration in the config folder.
+6. **Install `feh` to use background images.**
+```bash
+sudo pacman -S feh
+```
+
+7. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You can find my file configuration in the config folder.
 ```bash
 sudo yay -S i3-gaps
-``` 
+```
 
-7. **Install `rofi`, a run command interface.** My configuration file can be found in the config folder.
+8. **Install [Polybar](https://github.com/polybar/polybar/wiki).** My configuration file can be found in the config folder.
+```bash
+sudo yay -S polybar
+mkdir .config/polybar
+touch .config/polybar/config
+yay -S ttf-font-awesome-4
+```
+
+9. **Install `rofi`, a run command interface.** My configuration file can be found in the config folder.
 ```bash
 sudo pacman -S rofi
 ```
 
-8. **Add a composite manager, as [Picom](https://wiki.archlinux.org/index.php/Picom).**
+10. **Add a composite manager, as [Picom](https://wiki.archlinux.org/index.php/Picom).**
 ```bash
 sudo pacman -S picom
 mkdir ~/.config/picom/
-cp /etc/xdg/picom.conf. ~/.config/picom/picom.conf
-picom ~/.config/picom/picom.conf
+cp /etc/xdg/picom.conf ~/.config/picom/picom.conf
+picom --config ~/.config/picom/picom.conf
 ```
+
+

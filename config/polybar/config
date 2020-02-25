@@ -1,0 +1,318 @@
+; Doc: https://github.com/jaagr/polybar
+; Wiki: https://github.com/jaagr/polybar/wiki
+
+
+[colors]
+active = ${xrdb:active}
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+urgent = ${xrdb:color9}
+secondary = ${xrdb:secondary}
+underline = ${xrdb:color3}
+ram = ${xrdb:color14}
+cpu = ${xrdb:color13}
+spotify = ${xrdb:color10}
+power= ${colors.urgent}
+
+[bar/default]
+height = 32
+offset-y = 0
+top = true
+fixed-center = true
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 3
+module-margin = 2
+
+font-0 = System San Francisco Display:size=10;2
+font-1 = FontAwesome:size=11;3
+font-2 = MaterialIcons:size=11;4
+
+modules-left = i3
+modules-center = xwindow
+modules-right =  network volume date battery powermenu
+
+[bar/center]
+inherit = bar/default
+monitor = DVI-I-1
+modules-right = powermenu
+tray-position = right
+tray-detached = false
+tray-padding = 0
+
+[bar/left]
+inherit = bar/default
+monitor = HDMI-0
+modules-left =
+modules-right = cpu memory i3
+
+[bar/right]
+inherit = bar/default
+monitor = DVI-D-0
+modules-left = i3
+modules-center = date
+modules-right = volume
+padding-left = 3
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+format = <label-mode><label-state>
+label-mode-padding = 2
+label-focused = %index%  %icon%
+label-focused-padding = 2
+label-unfocused = %index%  %icon%
+label-unfocused-padding = 2
+label-visible = %index%  %icon%
+label-visible-padding = 2
+label-urgent = %index%  %icon%
+label-urgent-padding = 2
+label-focused-foreground = ${colors.active}
+label-focused-background = #29373d
+label-focused-underline = ${colors.underline}
+label-visible-foreground = ${colors.active}
+label-unfocused-foreground = ${colors.secondary}
+label-urgent-foreground = ${colors.urgent}
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/date]
+type = internal/date
+date = %{F#88C0D0}   %{F#4C566A}%B %d,  %{F#D8DEE9}%H:%M
+
+[module/volume]
+type = internal/alsa
+format-volume = <ramp-volume> <bar-volume>
+format-muted =  
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = ${colors.active}
+bar-volume-width = 6
+bar-volume-indicator =
+bar-volume-fill = 
+bar-volume-fill-font = 3
+bar-volume-fill-foreground = ${colors.foreground}
+bar-volume-empty = 
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = ${colors.secondary}
+
+
+[module/powermenu]
+type = custom/menu
+label-active-font = 1
+format-spacing = 1
+label-open = 
+label-open-foreground = ${colors.power}
+label-close = 
+label-close-foreground = ${colors.power}
+label-separator = |
+label-separator-foreground = ${colors.secondary}
+
+menu-0-0 = reboot
+menu-0-0-foreground = ${colors.foreground}
+menu-0-0-exec = reboot
+menu-0-1 = power off
+menu-0-1-foreground = ${colors.foreground}
+menu-0-1-exec = poweroff
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = Charging %percentage%%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = Discharging %percentage%%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+label-full = Fully charged
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+
+; =====================================
+;          Network
+
+[module/network]
+type = internal/network
+; Name of the network interface to display. You can get the names of the
+; interfaces on your machine with `ip link`
+; Wireless interfaces often start with `wl` and ethernet interface with `eno` or `eth`
+interface = wlo1
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+
+; Test connectivity every Nth update
+; A value of 0 disables the feature
+; NOTE: Experimental (needs more testing)
+; Default: 0
+;ping-interval = 3
+
+; @deprecated: Define min width using token specifiers (%downspeed:min% and %upspeed:min%)
+; Minimum output width of upload/download rate
+; Default: 3
+udspeed-minwidth = 5
+
+; Accumulate values from all interfaces
+; when querying for up/downspeed rate
+; Default: false
+accumulate-stats = true
+
+; Consider an `UNKNOWN` interface state as up.
+; Some devices like USB network adapters have
+; an unknown state, even when they're running
+; Default: false
+unknown-as-up = true
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <ramp-signal> <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+; format-packetloss = <animation-packetloss> <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = %essid%
+label-connected-foreground = ${colors.foreground}
+
+; Default: (none)
+label-disconnected = Not Connected
+label-disconnected-foreground = ${colors.secondary}
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
