@@ -60,4 +60,9 @@ cp /etc/xdg/picom.conf ~/.config/picom/picom.conf
 picom --config ~/.config/picom/picom.conf
 ```
 
+11. **Install a new bash, as [Fish](https://wiki.archlinux.org/index.php/Fish). You can also install [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish).** You can find some fish's themes [here](https://github.com/oh-my-fish). 
+```bash
+sudo pacman -S fish
+curl -L https://get.oh-my.fish | fish 
+```
 
