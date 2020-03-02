@@ -70,3 +70,8 @@ omf theme robbyrussell
 set -U fish_greeting ""
 ```
 
+12. **Install some package to beautify the computer.**
+```bash
+sudo pacman -S xsel   # A package to copy past in terminal
+```
+
