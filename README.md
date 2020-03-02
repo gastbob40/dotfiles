@@ -45,6 +45,7 @@ sudo yay -S polybar
 mkdir .config/polybar
 touch .config/polybar/config
 yay -S ttf-font-awesome-4
+./noto-font.sh              # this custom script (to get emoji fonts) can be found in the config folder of this repository.
 ```
 
 9. **Install `rofi`, a run command interface.** My configuration file can be found in the config folder.
