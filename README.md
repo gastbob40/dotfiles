@@ -76,3 +76,14 @@ set -U fish_greeting ""
 sudo pacman -S xsel   # A package to copy past in terminal
 ```
 
+## Install some applications
+
+- **[My Sql Workbench](), a cross-platform, visual database design tool developed by MySQL**
+```bash
+yay -S mysql-workbench
+```
+
+- **Tomcat, an open source software for of the Java Servletsoftware is an open source implementation of the Java Servlet.**
+Install the binary distribution of the 8.5.xx version, with the tar.gz format. You can find it [here](http://tomcat.apache.org/download-80.cgi)
+
+- **Eclipse, a Java IDE, usefull for CSULA web courses.** You must install the `Eclipse IDE for Enterprise Java Developers`, you can find it [here](https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers).
