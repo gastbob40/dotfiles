@@ -34,7 +34,7 @@ makepkg -si
 sudo pacman -S feh
 ```
 
-7. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You can find my file configuration in the config folder.
+7. **Install I3 manager.** I personally choose a fork of this version, `i3-gaps`. You will need to run I3 a first time to create the configuration file. You can find my file configuration in the config folder.
 ```bash
 sudo yay -S i3-gaps
 ```
